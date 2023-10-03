@@ -1,8 +1,5 @@
-This is the codebase we released for ICRA'22 F1tenth Competition. Check an exciting video in which we competed with the ETH Zurich team!
+This is the codebase we released for ICRA'22 F1tenth Competition. Check an exciting [video](http://zzjun725.github.io/files/projects/icracut.mp4) in which we competed with the ETH Zurich team! 
 
-<video id="video" controls="" preload="none" poster="http://zzjun725.github.io/files/projects/icra.jpg">
-      <source id="mp4" src="http://zzjun725.github.io/files/projects/icracut.mp4" type="video/mp4">
-      </video>
 
 ![icra1](http://zzjun725.github.io/files/projects/icra_poster1.png)
 
