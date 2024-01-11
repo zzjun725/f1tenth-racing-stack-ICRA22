@@ -1,12 +1,13 @@
-This is the codebase we released for ICRA'22 F1tenth Competition. Check an exciting [video](http://zzjun725.github.io/files/projects/icracut.mp4) in which we competed with the ETH Zurich team! 
+This is the codebase we released for our ICRA'22 F1tenth Competition. Check an exciting [video](http://zzjun725.github.io/files/projects/icracut.mp4) in which we competed with the ETH Zurich team! 
 
+**Overview**
+We are using pure-pursuit controller and a lane switcher for overtaking/obstacle avoidance.
 
 ![icra1](http://zzjun725.github.io/files/projects/icra_poster1.png)
 
 ![icra1](http://zzjun725.github.io/files/projects/icra_poster2.png) 
 
 **Instructions**
-
 1. Put maps(.png, .pgm, etc) and its configuration(.yaml) under `maps`
 2. Edit `config/params.yaml` to include correct map name
 3. Run `./scripts/populate.sh` to populate data files into subdirectories
