@@ -1,0 +1,26 @@
+# The following params are for maps
+map_name: 'levine_2nd'
+map_img_ext: '.pgm'
+
+# The following params are for path generator
+num_lanes: 1
+clockwise: False
+inner_safe_dist: 0.2
+outer_safe_dist: 0.2
+opp_safe_dist: 0.2
+
+# The following params are for opponent predictor
+track_file: "track"
+inner_bound: "inner_bound"
+outer_bound: "outer_bound"
+
+# The following params are for lane based controller
+real_test: False
+traj_file: "traj_race_cl"
+lane_files:
+    # - "lane_0"
+    # - "lane_1"
+    - "lane_optimal"
+
+# The following params are for dummy opponent car (simulation only)
+dummy_car_file: "traj_race_cl"
