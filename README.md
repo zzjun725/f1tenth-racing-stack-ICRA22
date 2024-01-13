@@ -62,7 +62,7 @@ Before you execute the following steps, make sure you are inside the `./src` fol
 
 ### Use the generated raceline for lane_follow(single agent)
 
-You should launch the node from the workspace folder `./` as normal, not inside the `src`.
+You should do `colcon build` and launch the node from the workspace folder `./` as normal, not inside the `src`.
 
 - Bring up simulation RVIZ(see [f1tenth_gym_ros](https://github.com/f1tenth/f1tenth_gym_ros)): `ros2 launch f1tenth_gym_ros gym_bridge_launch.py`
 
