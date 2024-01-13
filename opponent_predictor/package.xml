@@ -4,8 +4,6 @@
   <name>opponent_predictor</name>
   <version>0.0.0</version>
   <description>f1tenth opponent predictor lab</description>
-  <maintainer email="karpenet@seas.upenn.edu">Kedar Prasad Karpe</maintainer>
-  <maintainer email="gmcmahon@seas.upenn.edu">Griffon McMahon</maintainer>
   <maintainer email="jtsun@seas.upenn.edu">Jiatong Sun</maintainer>
   <license>MIT</license>
 

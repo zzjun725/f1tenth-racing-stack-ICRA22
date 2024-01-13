@@ -162,6 +162,8 @@ if opt_type == 'mintime':
 # assemble export paths
 file_paths["mintime_export"] = os.path.join(file_paths["module"], "outputs", input_map, "mintime")
 file_paths["traj_race_export"] = os.path.join(file_paths["module"], "outputs", input_map, "traj_race_cl.csv")
+file_paths["lane_optimal_export"] = os.path.join(file_paths["module"], "outputs", input_map, "lane_optimal.csv")
+
 # file_paths["traj_ltpl_export"] = os.path.join(file_paths["module"], "outputs", input_map, "traj_ltpl_cl.csv")
 file_paths["lap_time_mat_export"] = os.path.join(file_paths["module"], "outputs", input_map, lap_time_mat_opts["file"])
 
@@ -595,3 +597,9 @@ helper_funcs_glob.src.result_plots.result_plots(plot_opts=plot_opts,
                                                 bound1_interp=bound1,
                                                 bound2_interp=bound2,
                                                 trajectory=trajectory_opt)
+
+# save another copy of lane_optimal.csv
+
+with open(file_paths["lane_optimal_export"], 'w') as f:
+    for x, y, v in zip(trajectory_opt[:, 1], trajectory_opt[:, 2], trajectory_opt[:, 5]):
+        f.write("%.3f,%.3f,%.3f\n" % (x, y, v))

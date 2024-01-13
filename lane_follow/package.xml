@@ -4,8 +4,7 @@
     <name>lane_follow</name>
     <version>0.0.0</version>
     <description>f1tenth lane_follow</description>
-    <maintainer email="karpenet@seas.upenn.edu">Kedar Prasad Karpe</maintainer>
-    <maintainer email="gmcmahon@seas.upenn.edu">Griffon McMahon</maintainer>
+    <maintainer email="zhijunz@seas.upenn.edu">Zhijun Zhuang</maintainer>
     <maintainer email="jtsun@seas.upenn.edu">Jiatong Sun</maintainer>
     <license>UPenn</license>
 

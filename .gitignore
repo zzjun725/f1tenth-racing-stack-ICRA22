@@ -16,8 +16,12 @@
 **/venv/
 **/maps/
 !/maps/
+!/pure_pursuit/maps/
 **/csv/
 !/csv/
+!/pure_pursuit/csv/
 **/config/
 !/config/
+!/pure_pursuit/config/
 **/f1tenth_gym_ros/
+venv/

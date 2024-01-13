@@ -1,12 +1,12 @@
 # The following params are for maps
-map_name: 'icra_2'
-map_img_ext: '.png'
+map_name: 'levine_2nd'
+map_img_ext: '.pgm'
 
 # The following params are for path generator
-num_lanes: 3
+num_lanes: 2
 clockwise: False
-inner_safe_dist: 0.2
-outer_safe_dist: 0.2
+inner_safe_dist: 0.3
+outer_safe_dist: 0.3
 opp_safe_dist: 0.2
 
 # The following params are for opponent predictor
@@ -18,8 +18,7 @@ outer_bound: "outer_bound"
 real_test: True
 traj_file: "traj_race_cl"
 lane_files:
-    - "lane_0_smooth"
-    - "lane_1_smooth"
+    - "lane_0"
     - "lane_optimal"
 
 # The following params are for dummy opponent car (simulation only)

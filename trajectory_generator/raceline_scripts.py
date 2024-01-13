@@ -2,9 +2,8 @@ import os
 import csv
 from turtle import ycor
 from unicodedata import name
-import fire
-import time
 import matplotlib.pyplot as plt
+# from matplotlib.colors import LinearSegmentedColormap, Normalize
 import numpy as np
 from copy import deepcopy
 
@@ -346,20 +345,57 @@ def visualize_curvature_for_wp(wpfile='lane_optimal.csv', ka_thres=0.05):
         while i <= e:
             overtaking_idx.append(i)
             i += 1
-    print(overtaking_idx)
+    print("overtaking_idx: ", overtaking_idx)
     idx_path = os.path.join(cur_csv_dir, 'overtaking_wp_idx')
     np.save(idx_path, np.array(overtaking_idx))
 
+
+    # slow down(optional)
+    # corner
+    i = 0
+    n_ka = len(ka)
+    segments = []
+    while i < n_ka:
+        if abs(ka[i]) > 2*ka_thres:
+            begin = i
+            while i < n_ka and abs(ka[i]) > 2*ka_thres:
+                i += 1
+            if i-begin > 10:
+                segments.append((begin, i-1))
+        else:
+            i += 1
+    corner_idx = []
+    for seg in segments:
+        b, e = seg[0], seg[1]
+        i = b
+        while i <= e:
+            corner_idx.append(i)
+            i += 1
+
+    print("slowdown_idx: ", corner_idx)
+    idx_path = os.path.join(cur_csv_dir, 'slowdown_wp_idx')
+    np.save(idx_path, np.array(corner_idx))
+
     fig = plt.figure(figsize=(8, 5), dpi=120)
     ax = fig.add_subplot(2, 1, 1)
+    plt.plot(po[:, 0], po[:, 1], label='optimal_raceline')
+    plt.quiver(po[:, 0], po[:, 1], ka * no[:, 0], ka * no[:, 1], label='curvature arrow', width=0.001)
+
+    overtake_wp = []
     for i in overtaking_idx:
-        plt.scatter(po[i, 0], po[i, 1], c='r')
-    plt.plot(po[:, 0], po[:, 1])
-    plt.quiver(po[:, 0], po[:, 1], ka * no[:, 0], ka * no[:, 1])
+        overtake_wp.append([po[i, 0], po[i, 1]])
+    slow_wp = []
+    for i in corner_idx:
+        slow_wp.append([po[i, 0], po[i, 1]])
+    plt.scatter(np.array(slow_wp)[:, 0], np.array(slow_wp)[:, 1], c='g', label='slowdown_segment', s=5)
+    plt.scatter(np.array(overtake_wp)[:, 0], np.array(overtake_wp)[:, 1], c='r', label='overtaking_segment', s=5)
     plt.axis('equal')
+    plt.legend()
+
 
     ax = fig.add_subplot(2, 1, 2)
-    plt.plot(ka, '-bo', markersize=0.1)
+    plt.plot(ka, '-bo', markersize=0.1, label='curvature value')
+    plt.legend()
     plt.show()
 
 
@@ -369,13 +405,4 @@ def update_map():
     os.system(f'cp {cur_map_path} {src_map_path}')
 
 if __name__ == '__main__':
-    fire.Fire({
-        'draw_wp': draw_wp,
-        'draw_optimal': draw_optimalwp,
-        'smooth_wp': smooth_waypoints,
-        'vis_curv': visualize_curvature_for_wp,
-        'update_map': update_map,
-        'smooth_lane': get_smooth_lane,
-        'scale_map': scale_map,
-        'draw_lanes': draw_lanes
-    })
+    visualize_curvature_for_wp()
